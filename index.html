@@ -1,172 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ali Raza Lakhani – iOS Developer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            color: #222;
-            line-height: 1.6;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        header img {
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        h1 {
-            margin-bottom: 5px;
-        }
-        h2 {
-            margin-top: 35px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-        }
-        .contact {
-            font-size: 14px;
-            color: #555;
-        }
-        .job {
-            margin-bottom: 22px;
-        }
-        .date {
-            font-weight: bold;
-        }
-        ul {
-            margin-top: 6px;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        .download-btn {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 10px 18px;
-            background: #0066cc;
-            color: #fff;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .download-btn:hover {
-            background: #004999;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ali Raza Lakhani — Mobile Developer specializing in iOS, Swift, React Native, and Flutter.">
+  <title>Ali Raza Lakhani | Mobile Developer</title>
+  <style>
+    :root {
+      --ink: #18212f;
+      --muted: #5f6b7a;
+      --accent: #176b87;
+      --accent-dark: #104e65;
+      --line: #dce4ea;
+      --paper: #ffffff;
+      --soft: #f3f7fa;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--soft);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .page {
+      width: min(100% - 32px, 1000px);
+      margin: 36px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 55px rgba(24, 33, 47, .08);
+    }
+    header {
+      padding: 42px clamp(22px, 5vw, 56px) 34px;
+      color: #fff;
+      background: linear-gradient(135deg, #142b3a, #176b87);
+    }
+    h1 { margin: 0 0 6px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; letter-spacing: -.035em; }
+    .headline { margin: 0 0 18px; color: #d7edf5; font-size: 1.1rem; }
+    .contact { display: flex; flex-wrap: wrap; gap: 8px 18px; color: #edf7fa; font-size: .94rem; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    header a { color: #fff; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .button {
+      display: inline-block; padding: 10px 16px; border-radius: 8px;
+      font-weight: 700; text-decoration: none; transition: transform .15s ease, background .15s ease;
+    }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { background: #fff; color: #142b3a; }
+    .button-outline { border: 1px solid rgba(255,255,255,.65); color: #fff; }
+    main { padding: 8px clamp(22px, 5vw, 56px) 48px; }
+    section { margin-top: 30px; }
+    h2 {
+      margin: 0 0 16px; padding-bottom: 9px; border-bottom: 2px solid var(--line);
+      color: var(--accent-dark); font-size: 1.12rem; text-transform: uppercase; letter-spacing: .09em;
+    }
+    .summary { font-size: 1.02rem; color: #344254; }
+    .experience { position: relative; padding: 0 0 22px 20px; margin: 0 0 22px; border-left: 2px solid var(--line); }
+    .experience:last-child { margin-bottom: 0; padding-bottom: 0; }
+    .experience::before {
+      content: ""; position: absolute; left: -7px; top: 6px; width: 10px; height: 10px;
+      background: var(--accent); border: 2px solid #fff; border-radius: 50%;
+    }
+    .role-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; }
+    h3 { margin: 0; font-size: 1.05rem; }
+    .date { color: var(--muted); font-size: .92rem; font-weight: 650; }
+    .company { margin: 3px 0 8px; color: var(--accent); font-weight: 650; }
+    ul { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 5px 0; }
+    .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .skill-card { padding: 15px 16px; background: var(--soft); border: 1px solid var(--line); border-radius: 10px; }
+    .skill-card strong { display: block; margin-bottom: 4px; color: var(--accent-dark); }
+    .education-item { margin-bottom: 16px; }
+    .education-item:last-child { margin-bottom: 0; }
+    .education-item h3 { margin-bottom: 3px; }
+    .muted { color: var(--muted); }
+    footer { padding: 18px 24px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: .86rem; }
+    @media (max-width: 620px) {
+      .page { width: 100%; margin: 0; border-radius: 0; border: 0; }
+      header { padding-top: 32px; }
+      .skills { grid-template-columns: 1fr; }
+      .role-line { display: block; }
+      .date { display: block; margin-top: 3px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+      header { background: #fff; color: #18212f; padding: 20px 0; border-bottom: 2px solid #18212f; }
+      .headline, header .contact, header a { color: #18212f; }
+      .actions { display: none; }
+      main { padding: 0; }
+      section { break-inside: avoid; }
+      a { color: #18212f; }
+      footer { display: none; }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <header>
+      <h1>Ali Raza Lakhani</h1>
+      <p class="headline">Mobile Developer · iOS · React Native · Flutter</p>
+      <div class="contact">
+        <span>Karachi, Pakistan</span>
+        <span>Mobile: <a href="tel:+923058105908">+92 305 8105908</a></span>
+        <span>Email: <a href="mailto:aliraza15@live.com">aliraza15@live.com</a></span>
+        <span>LinkedIn: <a href="https://www.linkedin.com/in/ali-raza-lakhani-76297618/" target="_blank" rel="noopener noreferrer">View Profile</a></span>
+      </div>
+      <div class="actions">
+        <a class="button button-primary" href="AliRazaLakhani_CV.pdf" download>↓ Download PDF CV</a>
+        <a class="button button-outline" href="#experience">View Experience</a>
+      </div>
+    </header>
 
-<header>
-    <!-- Your photo --> 
-   <!-- 
-    <img src="Pic2.jpg" alt="Ali Raza Lakhani">
--->
-    <div>
-        <h1>Ali Raza Lakhani</h1>
-        <p class="contact">
-            Karachi, Pakistan • Tel: +92 305 8105908<br>
-            Email: <a href="mailto:aliraza15@live.com">aliraza15@live.com</a><br>
-            LinkedIn:
-            <a href="https://www.linkedin.com/in/ali-raza-lakhani-76297618/" target="_blank">
-                linkedin.com/in/ali-raza-lakhani
-            </a>
-        </p>
+    <main>
+      <section id="profile">
+        <h2>Professional Profile</h2>
+        <p class="summary">Passionate Mobile Developer with more than 6 years of iOS Mobile Application Development experience. Interested in contributing to a challenging, growth-oriented organization where technical knowledge and skills can support organizational success.</p>
+      </section>
 
-        <a class="download-btn" href="AliRazaLakhani_CV.pdf" download>
-            ⬇ Download PDF CV
-        </a>
-    </div>
-</header>
+      <section id="experience">
+        <h2>Work Experience</h2>
 
-<h2>Profile</h2>
-<p>
-    Passionate Mobile Developer with more than 5 years of iOS Mobile Application Development
-    experience. Seeking a challenging and growth-oriented organization to utilize my skills
-    and contribute to organizational success.
-</p>
+        <article class="experience">
+          <div class="role-line"><h3>React Native Developer</h3><span class="date">28 Apr 2026 – 14 Jun 2026</span></div>
+          <p class="company">QF Network · Karachi, Pakistan</p>
+          <ul>
+            <li>Learned, developed, and maintained mobile applications for Android and iOS using React Native.</li>
+            <li>Integrated REST APIs, Firebase Authentication, Firestore, push notifications, and third-party libraries; identified and resolved bugs and enhanced existing features.</li>
+            <li>Performed native iOS development and recently fixed bugs and published the SwiftUI app <strong>AI Material Master</strong> on the App Store: <a href="https://apps.apple.com/jp/app/ai-material-master/id6744245649" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+          </ul>
+        </article>
 
-<h2>Work Experience</h2>
+        <article class="experience">
+          <div class="role-line"><h3>Flutter Developer (Intern)</h3><span class="date">15 Mar 2026 – 15 Apr 2026</span></div>
+          <p class="company">Liquify Now Pvt. Ltd. · Karachi, Pakistan</p>
+          <ul>
+            <li>Worked on the <strong>Jointt.pk</strong> app using Flutter. Jointt brings trusted anchor brands in Pakistan into one app, with HyperMall same-day delivery within 8 km and SuperMall next-day delivery within a 25 km radius.</li>
+          </ul>
+        </article>
 
-<div class="job">
-    <p class="date">Nov 2023 – May 2025 | iOS Developer – UBL Fund Managers</p>
-    <ul>
-        <li>Developed <strong>UBL Funds</strong> investment app using Swift.
-            <a href="https://apps.apple.com/pk/app/ubl-funds-smart-savings/id979130863" target="_blank">App Store</a>
-        </li>
-        <li>Developed <strong>Al Ameen Funds</strong> app using Swift.
-            <a href="https://apps.apple.com/us/app/al-ameen-funds/id6738091718" target="_blank">App Store</a>
-        </li>
-    </ul>
-</div>
+        <article class="experience">
+          <div class="role-line"><h3>Career Break – Caregiving</h3><span class="date">Jun 2025 – Feb 2026</span></div>
+          <p class="company">Karachi, Pakistan</p>
+          <p class="muted">Career break for family caregiving due to mother's health.</p>
+        </article>
 
-<div class="job">
-    <p class="date">Mar 2023 – Oct 2023 | iOS Developer – Upwork (Freelance)</p>
-    <ul>
-        <li>Developed E-Commerce app <strong>Tjara</strong> using Swift.
-            <a href="https://apps.apple.com/us/app/tjara/id1473913447" target="_blank">App Store</a>
-        </li>
-    </ul>
-</div>
+        <article class="experience">
+          <div class="role-line"><h3>iOS Developer</h3><span class="date">Nov 2023 – May 2025</span></div>
+          <p class="company">UBL Fund Managers · Karachi, Pakistan</p>
+          <ul>
+            <li>Developed the <strong>UBL Funds</strong> app using Swift, enabling investors to monitor investments and conduct online transactions. <a href="https://apps.apple.com/pk/app/ubl-funds-smart-savings/id979130863" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+            <li>Developed the <strong>Al Ameen Funds</strong> app using Swift. <a href="https://apps.apple.com/us/app/al-ameen-funds/id6738091718" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+          </ul>
+        </article>
 
-<div class="job">
-    <p class="date">Nov 2021 – May 2023 | iOS Developer – NewSoftwares LLC</p>
-    <ul>
-        <li>Developed core features using Objective-C and Xcode.</li>
-        <li>Built security app <strong>Calculator #</strong>.
-            <a href="https://apps.apple.com/us/app/calculator-hide-photos-videos/id1165276801" target="_blank">App Store</a>
-        </li>
-    </ul>
-</div>
+        <article class="experience">
+          <div class="role-line"><h3>iOS Developer</h3><span class="date">Nov 2021 – May 2023</span></div>
+          <p class="company">NewSoftwares LLC · Karachi, Pakistan</p>
+          <ul>
+            <li>Used Objective-C and Xcode to develop core application features, with a focus on user experience and performance.</li>
+            <li>Developed <strong>Calculator #</strong>, a security app that disguises itself as a calculator while hiding personal photos, videos, documents, passwords, notes, contacts, and to-dos. <a href="https://apps.apple.com/us/app/calculator-hide-%20photos-videos/id1165276801" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+          </ul>
+        </article>
 
-<div class="job">
-    <p class="date">Apr 2021 – Aug 2021 | iOS Developer – Novus Altair IT Services</p>
-    <ul>
-        <li>Developed <strong>Novus Guard</strong> workforce safety app.
-            <a href="https://apps.apple.com/be/app/novus-guard/id1418564392" target="_blank">App Store</a>
-        </li>
-    </ul>
-</div>
+        <article class="experience">
+          <div class="role-line"><h3>iOS Developer</h3><span class="date">Apr 2021 – Aug 2021</span></div>
+          <p class="company">Novus Altair IT Services · Karachi, Pakistan</p>
+          <ul>
+            <li>Developed <strong>Novus Guard</strong> using Swift, a workforce management app supporting lone-worker protection, fleet tracking, geofencing, and geotagging. <a href="https://apps.apple.com/be/app/novus-guard/id1418564392" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+          </ul>
+        </article>
 
-<div class="job">
-    <p class="date">Dec 2018 – Jun 2020 | iOS Developer – Innovative Solutions</p>
-    <ul>
-        <li>Developed Chess Game app using Objective-C.</li>
-    </ul>
-</div>
+        <article class="experience">
+          <div class="role-line"><h3>iOS Developer</h3><span class="date">Dec 2018 – Jun 2020</span></div>
+          <p class="company">Innovative Solutions · Karachi, Pakistan</p>
+          <ul><li>Developed a Chess Game app using Objective-C and maintained other iOS applications.</li></ul>
+        </article>
 
-<div class="job">
-    <p class="date">Oct 2017 – Nov 2018 | iOS Developer – Q-Solutions</p>
-    <ul>
-        <li>Developed Ecommerce app <strong>USA Wholesale & Distributing</strong>.</li>
-        <li>Built internal warehouse apps (Picker & Driver).</li>
-    </ul>
-</div>
+        <article class="experience">
+          <div class="role-line"><h3>iOS Developer</h3><span class="date">Oct 2017 – Nov 2018</span></div>
+          <p class="company">Q-Solutions · Karachi, Pakistan</p>
+          <ul>
+            <li>Developed native iOS applications using Swift.</li>
+            <li><strong>USA Wholesale &amp; Distributing:</strong> e-commerce app with product listings, barcode search, and a cart synchronized with the website. <a href="https://apps.apple.com/us/app/usa-%20wholesale/id1189929519" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+            <li><strong>IBBERP Picker:</strong> warehouse inventory management, order fulfillment, and delivery. <a href="https://apps.apple.com/us/app/order-%20fulfillment/id1470389902" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+            <li><strong>IBBERP Driver:</strong> app for loading, unloading, receiving returned goods, and tracking customer and return orders. <a href="https://apps.apple.com/us/app/ibberp-driver/id1517965865" target="_blank" rel="noopener noreferrer">View app</a>.</li>
+          </ul>
+        </article>
 
-<h2>Skills</h2>
-<ul>
-    <li><strong>Languages:</strong> Swift, Objective-C</li>
-    <li><strong>Frameworks:</strong> UIKit, Core Data, Realm, AVFoundation, Core Location</li>
-    <li><strong>Firebase:</strong> Auth, Firestore, Crashlytics</li>
-    <li><strong>Tools:</strong> Xcode, Git, CocoaPods, SPM, Postman, TestFlight</li>
-    <li><strong>Soft Skills:</strong> Communication, Leadership, Problem Solving</li>
-</ul>
+        <article class="experience">
+          <div class="role-line"><h3>iOS Developer – Freelance Project</h3><span class="date">Mar 2023 – Oct 2023</span></div>
+          <p class="company">Freelance · Karachi, Pakistan</p>
+          <ul><li>Developed the Swift-based e-commerce app <strong>Tjara</strong>, a platform that helps existing businesses go online or lets people start an online business. <a href="https://apps.apple.com/us/app/tjara/id1473913447" target="_blank" rel="noopener noreferrer">View app</a>.</li></ul>
+        </article>
 
-<h2>Education</h2>
-<ul>
-    <li><strong>2021–2023:</strong> MS Computer Science & IT – NED University</li>
-    <li><strong>2013–2016:</strong> BS Computer Science – Iqra University</li>
-    <li><strong>2010–2012:</strong> Intermediate – Habib Public High School</li>
-    <li><strong>2000–2010:</strong> Matriculation – Ghulaman-e-Abbas School</li>
-</ul>
+        <article class="experience">
+          <div class="role-line"><h3>Intern</h3><span class="date">Aug 2016 – Sep 2016</span></div>
+          <p class="company">We4Do (Pvt.) Limited · Karachi, Pakistan</p>
+          <ul>
+            <li>Software Quality Assurance.</li>
+            <li>Web development using ASP.NET and C#.</li>
+          </ul>
+        </article>
+      </section>
 
+      <section id="skills">
+        <h2>Relevant Skills</h2>
+        <div class="skills">
+          <div class="skill-card"><strong>Programming Languages</strong>Swift, Objective-C, Dart, TypeScript</div>
+          <div class="skill-card"><strong>Frameworks &amp; Technologies</strong>UIKit, SwiftUI, Core Data, Realm, AVFoundation, Core Location, Firebase (Auth, Firestore, Crashlytics), RxSwift, Supabase, SwiftData, React Native CLI</div>
+          <div class="skill-card"><strong>Architectures &amp; Patterns</strong>MVC, MVVM</div>
+          <div class="skill-card"><strong>Tools &amp; Platforms</strong>Xcode, Android Studio, VS Code, Git, GitHub Desktop, Sourcetree, Postman, CocoaPods, Swift Package Manager, REST APIs, JSON, TestFlight, App Store Connect</div>
+          <div class="skill-card"><strong>Soft Skills</strong>Team collaboration, time management, communication, leadership, attention to detail, problem solving</div>
+          <div class="skill-card"><strong>Languages</strong>English</div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+          <h3>Master of Science – Computer Science &amp; Information Technology</h3>
+          <div class="muted">2021 – 2023 · NED University, Karachi, Pakistan</div>
+        </div>
+        <div class="education-item">
+          <h3>Bachelor of Science – Computer Science</h3>
+          <div class="muted">2013 – 2016 · Iqra University, Karachi, Pakistan</div>
+          <p><strong>Final Year Project:</strong> Web-based Machine Learning Tool using J2EE, JSF, PrimeFaces, and Weka Java API.</p>
+        </div>
+      </section>
+    </main>
+    <footer>Ali Raza Lakhani · Mobile Developer · Karachi, Pakistan</footer>
+  </div>
 </body>
 </html>
